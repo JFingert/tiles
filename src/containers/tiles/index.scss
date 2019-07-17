@@ -1,0 +1,19 @@
+
+.tiles {
+  width: 50%;
+  min-width: 400px;
+  padding-top: 20px;
+}
+
+.tile {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+
+  &.special {
+    filter: brightness(1.75);
+  }
+}
+
+.border-top {
+  border-top: solid 1px black;
+}
