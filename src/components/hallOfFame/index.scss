@@ -1,32 +1,12 @@
-.article-create {
-  text-align: left;
-  width: 25%;
-  position: absolute;
-  left: 15%;
-}
+$break-small: 515px;
 
-.border-top {
-  border-top: solid 1px black;
-}
-
-.inline {
-  display: inline-block;
-  top: 0;
-}
-
-textarea {
-  resize: vertical;
-}
-
-
-/*.article {
-  text-align: left;
+.hall-of-fame {
   width: 50%;
   margin-left: 25%;
-}
+  border-top: solid 1px black;
 
-span {
-  p {
-    font-size: 11px;
+  @media screen and (max-width: $break-small) {
+    width: 75%;
+    margin-left: 12.5%;
   }
-}*/
+}

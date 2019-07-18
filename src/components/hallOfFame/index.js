@@ -1,14 +1,16 @@
 import React, { Fragment } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 const HallOfFame = ({ hallOfFame }) => {
   const topTen = hallOfFame.slice(0, 10);
   return (
     <Fragment>
-    {topTen.map(user => (
-      <h2>{user.name} - {user.level}</h2>
-    ))}
+      <h2>Hall of Fame</h2>
+      <div className='hall-of-fame'>
+        {topTen.map(user => (
+          <h2>{user.name} - {user.level}</h2>
+        ))}
+      </div>
     </Fragment>
   )
 }

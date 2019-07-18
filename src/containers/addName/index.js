@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 
 import { addName } from '../../modules/tileReducer';
 
-import { level } from '../../modules/tileReducer';
-
 class AddName extends Component {
   state = {
     name: ''

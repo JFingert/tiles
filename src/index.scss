@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 $default-serif: 'Montserrat', serif;
-$break-small: 800px;
+$break-small: 515px;
+$break-medium: 800px;
 
 @import 'containers/app/index';
 @import 'containers/addName/index';
@@ -29,9 +30,11 @@ body {
     margin: 0;
     text-align: center;
 
+    @media screen and (max-width: $break-medium) {
+      margin: 0 20px;
+    }
     @media screen and (max-width: $break-small) {
-       margin: 0 20px;
-
+      margin: 0;
     }
   }
 }

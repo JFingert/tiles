@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { selectTile, resetState, level, tileFactor, isIncrementing } from '../../modules/tileReducer';
+import { selectTile, resetState } from '../../modules/tileReducer';
 
 class Tiles extends Component {
   state = {
@@ -11,8 +10,8 @@ class Tiles extends Component {
     factor: 0
   };
   
-  componentDidMount() {
-    this.props.resetState();
+  async componentDidMount() {
+    await this.props.resetState();
     this.buildTiles();
   }
 
@@ -31,7 +30,7 @@ class Tiles extends Component {
   addName = () => this.props.history.push('/add-name');
 
   buildTiles = () => {
-    const { tileRows, factor } = this.state;
+    const { factor } = this.state;
     const { tileFactor, level } = this.props;
 
     if (tileFactor === factor) return;
@@ -47,18 +46,19 @@ class Tiles extends Component {
 
     for (let i = 1; i < totalTiles + 1; i++) {
       const isSpecial = i === specialTile;
-      tiles.push(
-        <div 
-          className={'tile ' + (isSpecial ? 'special' : '')}
-          style={{ 
-            background: `#${randomColor}`,
-            height: `${tileSize}px`,
-            width: `${tileSize}px`
-          }}
-          onClick={() => this.handleClick(isSpecial ? 'special' : null)}>
-        </div>)
+      const tile = <div
+        key={`tile_${i}`}
+        className={'tile ' + (isSpecial ? 'special' : '')}
+        style={{ 
+          background: `#${randomColor}`,
+          height: `${tileSize}px`,
+          width: `${tileSize}px`
+        }}
+        onClick={() => this.handleClick(isSpecial ? 'special' : null)}>
+      </div>;
+      tiles.push(tile);
       if (i >= tileFactor && i % tileFactor === 0) {
-        tiles.push(<br />);
+        tiles.push(<br key={`break_${i}`} />);
       }
     }
     this.setState({ tileRows: tiles, factor: tileFactor });
@@ -66,7 +66,7 @@ class Tiles extends Component {
   
   render() {
     const { tileRows } = this.state;
-    const { tileFactor, level } = this.props;
+    const { level } = this.props;
       return (
         <div className="container">
           <h2>Tiles</h2>
@@ -77,6 +77,7 @@ class Tiles extends Component {
           <div className='tiles inline border-top'>
             {tileRows}
           </div>
+          <p>Levels completed: {level - 1}</p>
         </div>
       );
     }
