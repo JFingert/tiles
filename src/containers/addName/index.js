@@ -32,7 +32,7 @@ class AddName extends Component {
             <strong>Enter your name into the hall of fame!</strong>
           </p>
           <p>
-            <label htmlFor='title'>Title: </label>
+            <label htmlFor='title'>Name: </label>
             <input
               type='text'
               name='name'
